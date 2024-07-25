@@ -1,8 +1,0 @@
-"define"in window&&define("discourse/theme-74/discourse/pre-initializers/theme-74-translations",["exports"],(function(e){"use strict"
-Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
-e.default={name:"theme-74-translations",initialize(){const e={zh_CN:{filters:{custom:{help:"标签"}}},en:{}}
-for(let t in e){let i=I18n.translations
-for(let e of[t,"js","theme_translations"])i=i[e]=i[e]||{}
-i[74]=e[t]}}}}))
-
-//# sourceMappingURL=108af40fa662a89aaf7a21f877353d51e03f20ab.map?__ws=shuiyuan.sjtu.edu.cn

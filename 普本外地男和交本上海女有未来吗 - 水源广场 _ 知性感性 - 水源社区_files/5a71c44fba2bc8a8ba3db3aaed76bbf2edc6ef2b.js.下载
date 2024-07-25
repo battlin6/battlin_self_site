@@ -1,8 +1,0 @@
-"define"in window&&define("discourse/theme-91/discourse/pre-initializers/theme-91-translations",["exports"],(function(e){"use strict"
-Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
-e.default={name:"theme-91-translations",initialize(){const e={en:{copy_title:"Copy link to clipboard"},zh_CN:{copy_title:"复制链接"}}
-for(let t in e){let i=I18n.translations
-for(let e of[t,"js","theme_translations"])i=i[e]=i[e]||{}
-i[91]=e[t]}}}}))
-
-//# sourceMappingURL=5a71c44fba2bc8a8ba3db3aaed76bbf2edc6ef2b.map?__ws=shuiyuan.sjtu.edu.cn

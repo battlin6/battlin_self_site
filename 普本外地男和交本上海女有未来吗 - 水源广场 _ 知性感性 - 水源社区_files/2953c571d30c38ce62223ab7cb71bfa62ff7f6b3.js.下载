@@ -1,7 +1,0 @@
-"require"in window&&require("discourse/lib/theme-settings-store").registerSettings(74,{nav_tag:"精品"}),"define"in window&&define("discourse/theme-74/discourse/api-initializers/discourse_nav_feature",["exports","discourse/lib/api"],(function(e,i){"use strict"
-Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
-const t=require("discourse/lib/theme-settings-store").getObjectForTheme(74)
-e.default=(0,i.apiInitializer)("0.11.1",(e=>{const i=t.nav_tag
-""!=i&&e.addNavigationBarItem({name:i,displayName:i,href:`/tag/${i}`,customFilter:(e,t,r)=>t.tagId!=i,forceActive:(e,t,r)=>t.tagId==i,before:"unread"})}))}))
-
-//# sourceMappingURL=2953c571d30c38ce62223ab7cb71bfa62ff7f6b3.map?__ws=shuiyuan.sjtu.edu.cn

@@ -1,8 +1,0 @@
-"define"in window&&define("discourse/theme-101/discourse/pre-initializers/theme-101-translations",["exports"],(function(e){"use strict"
-Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
-e.default={name:"theme-101-translations",initialize(){const e={zh_CN:{top_contributors:{heading:"排名靠前的贡献者",view_all:"查看全部"},popular_tags:{heading:"热门标签",view_all:"查看全部"},recent_replies:{heading:"最近回复"},subcategory_list:{heading:"子类别"},top_topics:{heading:"热门话题"},category_list:{heading:"类别"}},en:{top_contributors:{heading:"Top contributors",view_all:"View all"},popular_tags:{heading:"Popular tags",view_all:"View all"},recent_replies:{heading:"Recent replies"},subcategory_list:{heading:"Subcategories"},top_topics:{heading:"Top topics"},category_list:{heading:"Categories"}}}
-for(let i in e){let t=I18n.translations
-for(let e of[i,"js","theme_translations"])t=t[e]=t[e]||{}
-t[101]=e[i]}}}}))
-
-//# sourceMappingURL=fa5eb879820709a6d0478019929d72abcda6bd2e.map?__ws=shuiyuan.sjtu.edu.cn

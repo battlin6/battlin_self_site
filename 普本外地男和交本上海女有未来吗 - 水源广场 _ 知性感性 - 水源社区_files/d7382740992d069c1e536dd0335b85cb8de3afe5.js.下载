@@ -1,8 +1,0 @@
-"define"in window&&define("discourse/theme-64/discourse/pre-initializers/theme-64-translations",["exports"],(function(t){"use strict"
-Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0
-t.default={name:"theme-64-translations",initialize(){const t={zh_CN:{table_of_contents:"目录",insert_table_of_contents:"插入目录"},en:{table_of_contents:"table of contents",insert_table_of_contents:"Insert table of contents",jump_bottom:"Jump to end",toggle_toc:{show_timeline:"Timeline",show_toc:"Contents"}}}
-for(let e in t){let n=I18n.translations
-for(let t of[e,"js","theme_translations"])n=n[t]=n[t]||{}
-n[64]=t[e]}}}}))
-
-//# sourceMappingURL=d7382740992d069c1e536dd0335b85cb8de3afe5.map?__ws=shuiyuan.sjtu.edu.cn

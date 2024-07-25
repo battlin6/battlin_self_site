@@ -1,8 +1,0 @@
-setTimeout((()=>{if(!performance.getEntriesByName("discourse-booted").length&&!document.querySelector("section#main").children.length){var e=document.createElement("p")
-e.innerHTML="请稍等，水源社区正在启动",document.body.insertAdjacentElement("afterbegin",e),setTimeout((()=>{e.remove()}),4e3)}}),1e3),setTimeout((()=>{if(!performance.getEntriesByName("discourse-booted").length&&!document.querySelector("section#main").children.length){console.log("failed!")
-var e=document.createElement("div")
-e.innerHTML="<h1>很抱歉，看上去水源社区没有正常启动。</h1><p>这可能是由于你的浏览器版本过于老旧，请<a href='https://shuiyuan.s3.jcloud.sjtu.edu.cn/static/browser-check/index.html'>检查浏览器兼容性</a>，或与ishuiyuan@sjtu.edu.cn联系。</p>",e.style.zIndex=1e6,e.style.position="absolute",e.style.backgroundColor="lightgoldenrodyellow",document.body.insertAdjacentElement("afterbegin",e)
-var t=new XMLHttpRequest
-t.open("POST","/logs/report_js_error"),t.setRequestHeader("Content-Type","application/x-www-form-urlencoded"),t.send(encodeURI("message=[Discourse Boot Failure Detect] user discourse boot failed after 5s"))}}),5e3)
-
-//# sourceMappingURL=19b4640f9b7fefd688672e06cba5d97f064376b1.map?__ws=shuiyuan.sjtu.edu.cn
