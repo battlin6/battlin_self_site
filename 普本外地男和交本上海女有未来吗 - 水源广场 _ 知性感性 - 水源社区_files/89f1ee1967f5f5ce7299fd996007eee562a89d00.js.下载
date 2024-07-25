@@ -1,0 +1,39 @@
+"define"in window&&define("discourse/theme-92/discourse/api-initializers/onebox-163music",["exports","discourse/lib/api","I18n"],(function(e,t,i){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+require("discourse/lib/theme-settings-store").getObjectForTheme(92)
+e.default=(0,t.apiInitializer)("0.11.1",(e=>{const t=(e,t)=>{const i=(e=>{if(void 0===e)return document.createElement("iframe")
+for(;e.attributes.length>0;)e.removeAttribute(e.attributes[0].name)
+return e})(t)
+return i.classList.add("onebox-163music-iframe"),i.setAttribute("src",e),i.setAttribute("sandbox","allow-scripts allow-same-origin"),i.setAttribute("referrerpolicy","no-referrer"),i.setAttribute("loading","lazy"),i.setAttribute("importance","low"),i},i=(e,i,s,r)=>{switch(t((e=>{const t=new URL(e,document.baseURI),i=new URL("//music.163.com/outchain/player",document.baseURI)
+return t.searchParams.forEach(((e,t)=>{["id","type","height"].includes(t)&&i.searchParams.set(t,e)})),i.searchParams.set("auto","0"),i.toString()})(e),i),i.classList.add("onebox","onebox-163music"),parseInt(s)){case 0:i.classList.add("onebox-163music-playlist")
+break
+case 1:i.classList.add("onebox-163music-song")
+break
+case 2:i.classList.add("onebox-163music-album")
+break
+case 3:i.classList.add("onebox-163music-artist")
+break
+default:i.classList.add("onebox-163music-unknown")}return i.setAttribute("height",r),i.setAttribute("data-onebox-src",e),i}
+e.decorateCookedElement((e=>{e.querySelectorAll("iframe").forEach((e=>{const t=e.getAttribute("src"),s=new URL(t,document.baseURI),r=[]
+"music.163.com"===s.hostname&&"/outchain/player"===s.pathname&&(i(t,e,s.searchParams.get("type"),e.getAttribute("height")),r.push(e))}))}),{id:"163music-onebox-decorator",onlyStream:!0})}))})),"define"in window&&define("discourse/theme-92/discourse/api-initializers/onebox-bilibili",["exports","discourse/lib/api","I18n"],(function(e,t,i){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+require("discourse/lib/theme-settings-store").getObjectForTheme(92)
+e.default=(0,t.apiInitializer)("0.11.1",(e=>{const t=e=>{const t=new URL(e,document.baseURI),i=new URL("//player.bilibili.com/player.html",document.baseURI)
+if("player.bilibili.com"===t.hostname)t.searchParams.forEach(((e,t)=>i.searchParams.set(t,e)))
+else{const e=/bv([a-zA-Z0-9]+)/i,s=/av([a-zA-Z0-9]+)/i
+e.test(t.pathname)&&i.searchParams.set("bvid","BV"+t.pathname.match(e)[1]),s.test(t.pathname)&&i.searchParams.set("avid",t.pathname.match(s)[1])}return i.searchParams.set("autoplay",0),i.toString()},i=(e,t)=>{const i=(e=>{if(void 0===e)return document.createElement("iframe")
+for(;e.attributes.length>0;)e.removeAttribute(e.attributes[0].name)
+return e})(t)
+return i.classList.add("onebox-bilibili-iframe"),i.setAttribute("src",e),i.setAttribute("sandbox","allow-scripts allow-same-origin"),i.setAttribute("referrerpolicy","no-referrer"),i.setAttribute("loading","lazy"),i.setAttribute("importance","low"),i}
+e.decorateCookedElement((e=>{const s=/^https?:\/\/(?:www\.)?bilibili\.com\/video\/([a-zA-Z0-9]+)(?:\/.*|\?.*)?$/
+let r=e.querySelectorAll(".onebox"),a=e.querySelectorAll("iframe")
+const o=[]
+r.forEach((e=>{const r=e.getAttribute("data-onebox-src")??e.getAttribute("href")
+if(s.test(r)){const s=(e=>{const s=document.createElement("div")
+s.classList.add("onebox","onebox-bilibili"),s.setAttribute("data-onebox-src",e)
+const r=i(t(e))
+return s.replaceChildren(r),s})(r)
+e.replaceWith(s),o.push(s)}})),a.forEach((e=>{const s=e.getAttribute("src")
+"player.bilibili.com"===new URL(s,document.baseURI).hostname&&(((e,s)=>{i(t(e),s),s.setAttribute("data-onebox-src",e),s.classList.add("onebox","onebox-bilibili")})(s,e),o.push(e))}))}),{id:"bilibili-onebox-decorator",onlyStream:!1})}))}))
+
+//# sourceMappingURL=89f1ee1967f5f5ce7299fd996007eee562a89d00.map?__ws=shuiyuan.sjtu.edu.cn

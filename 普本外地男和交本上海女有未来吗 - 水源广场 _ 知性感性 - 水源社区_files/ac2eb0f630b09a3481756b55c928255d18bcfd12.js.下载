@@ -1,0 +1,8 @@
+"define"in window&&define("discourse/theme-96/discourse/pre-initializers/theme-96-translations",["exports"],(function(e){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+e.default={name:"theme-96-translations",initialize(){const e={zh_CN:{low_data_mode:"省流模式",low_data_mode_image:"不加载用户帖子中的图片",low_data_mode_video:"不加载用户帖子中的多媒体内容",place_holder_image:"[点击加载图片]",place_holder_video:"[点击加载多媒体内容]"},en:{low_data_mode:"Low Data Mode",low_data_mode_image:"Do not load images",low_data_mode_video:"Do not load videos",place_holder_image:"[点击加载图片]",place_holder_video:"[点击加载视频]"}}
+for(let o in e){let a=I18n.translations
+for(let e of[o,"js","theme_translations"])a=a[e]=a[e]||{}
+a[96]=e[o]}}}}))
+
+//# sourceMappingURL=ac2eb0f630b09a3481756b55c928255d18bcfd12.map?__ws=shuiyuan.sjtu.edu.cn

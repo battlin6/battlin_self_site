@@ -1,0 +1,19 @@
+"define"in window&&define("discourse/theme-90/discourse/initializers/theme-field-369-common-html-script-1",["exports","discourse/lib/plugin-api"],(function(e,t){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+require("discourse/lib/theme-settings-store").getObjectForTheme(90)
+e.default={name:"theme-field-369-common-html-script-1",after:"inject-objects",initialize(){(0,t.withPluginApi)("0.1",(e=>{function t(e){var t=document.createElement("div")
+t.style.position="fixed",t.style.top="0",t.style.left="0",t.style.width="100%",t.style.height="100%",t.style.zIndex="9999",t.style.pointerEvents="none",t.style.backgroundSize="240px 120px"
+const n=function(e){const t=""==getComputedStyle(document.documentElement).getPropertyValue("--primary")?"#ffffff":getComputedStyle(document.documentElement).getPropertyValue("--primary"),n=""==getComputedStyle(document.documentElement).getPropertyValue("--secondary")?"#000000":getComputedStyle(document.documentElement).getPropertyValue("--secondary"),l=document.createElement("canvas"),i=l.getContext("2d"),o="60px Consolas,Georgia,sans-serif,Arial"
+i.font=o
+const r=i.measureText(e).width
+return l.width=2*r,l.height=120,i.fillStyle=n,i.fillRect(r,0,r,60),i.fillRect(0,60,r,60),i.fillStyle=t,i.fillRect(0,0,r,60),i.fillRect(r,60,r,60),i.font=o,i.fillStyle=n,i.fillText(e,0,50),i.fillText(e,r,110),i.font=o,i.fillStyle=t,i.fillText(e,0,110),i.fillText(e,r,50),l.toDataURL()}(function(e){const t=new ArrayBuffer(4)
+new DataView(t).setUint32(0,e,0)
+const n=new Uint8Array(t)
+return btoa(String.fromCharCode(...n).slice(1,4)).slice(1,4)}(e))
+t.style.backgroundImage=`url(${n})`,t.style.opacity=.00499
+const l=Math.floor(10*Math.random())+4,i=[]
+for(let e=0;e<l;e++){let e=document.createElement("div")
+i.push(e),e.classList.add("ember-view"),Math.random()>.5?document.body.appendChild(e):document.querySelector("#main").appendChild(e),Math.random()>.3&&e.appendChild(document.createElement("div"))}return i[Math.floor(Math.random()*i.length)].appendChild(t),t}function n(){const l=e.getCurrentUser()?.id
+if(null!=l){t(l)}else setTimeout(n,1e3)}document.addEventListener("discourse-ready",(e=>{n()}))}))}}}))
+
+//# sourceMappingURL=12cfa934ec86d3f251c8c1006c1d9659a9cd63d3.map?__ws=shuiyuan.sjtu.edu.cn

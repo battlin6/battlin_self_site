@@ -1,0 +1,18 @@
+define("discourse/plugins/discourse-graphviz/discourse-markdown/discourse-graphviz",["exports"],(function(e){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.setup=function(e){if(!e.markdownIt)return
+e.allowList(["div.graphviz","div.graphviz.is-loading","div.graphviz-svg"]),e.registerOptions(((e,i)=>{e.features.graphviz=i.discourse_graphviz_enabled})),e.registerPlugin((e=>{e.options.discourse.features.graphviz&&e.block.bbcode.ruler.push("graphviz",{tag:"graphviz",replace(e,i,s){const r=e.push("html_raw","",0),t=e.md.utils.escapeHtml(s),a=e.md.utils.escapeHtml(i.attrs.engine),n=["dot","neato","circo","fdp","osage","twopi"].includes(a)?`data-engine='${a}'`:"data-engine='dot'"
+let d=""
+return"true"===i.attrs.svg?d=" graphviz-svg":"false"===i.attrs.svg&&(d=" graphviz-no-svg"),r.content=`<div class="graphviz is-loading${d}" ${n}>\n${t}\n</div>\n`,!0}})}))}})),define("discourse/plugins/discourse-graphviz/initializers/discourse-graphviz",["exports","jquery","pretty-text/sanitizer","discourse/lib/load-script","discourse/lib/plugin-api","discourse-common/lib/debounce"],(function(e,i,s,r,t,a){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+e.default={name:"discourse-graphviz",renderGraphs(e){e.each(((e,s)=>{const r=(0,i.default)(s)
+r.find("svg").length||this.renderGraph(r)}))},renderGraph(e){const t=e.text().trim(),a=e.attr("data-engine"),n=(0,i.default)("<div class='spinner tiny'></div>")
+e.html(n),(0,r.default)("/plugins/discourse-graphviz/javascripts/viz-3.0.1.js").then((()=>{e.removeClass("is-loading")
+try{const i=vizRenderStringSync(t,{format:"svg",engine:a})
+e.html(i)}catch(r){const t=(0,i.default)(`<div class='graph-error'>${(0,s.escape)(r.message)}</div>`)
+e.html(t)}}))},initialize(e){e.lookup("service:site-settings").discourse_graphviz_enabled&&(0,t.withPluginApi)("0.8.22",(e=>{e.decorateCooked((e=>{const i=e.find(".graphviz")
+i.length&&(0,a.default)(this,this.renderGraphs,i,200)}),{id:"graphviz"})}))}}}))
+
+//# sourceMappingURL=discourse-graphviz-fe529a929586674ae826cb45f9e7dbb7897caa22c41356b4e35102e7954eb141.map
+//!
+
+;

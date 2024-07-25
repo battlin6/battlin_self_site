@@ -1,0 +1,8 @@
+"require"in window&&require("discourse/lib/theme-settings-store").registerSettings(93,{hide_delete_user_from_review:!0,hide_logout_for_jwb:!0,remove_hidden_gap:!0,remove_shield_icon_from_username:!0,remove_solved_text:!0,unset_custom_emoji_size:!0,custom_emoji_size_limit:128,remove_screened_email_allow_button:!0,fix_chat_image_thumbnail:!0}),"define"in window&&define("discourse/theme-93/discourse/api-initializers/shuiyuan-frontend-tweaker",["exports","discourse/lib/api"],(function(e,i){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+const t=require("discourse/lib/theme-settings-store").getObjectForTheme(93)
+e.default=(0,i.apiInitializer)("0.11.1",(e=>{window.navigator.userAgent.includes("TaskCenterApp")&&document.querySelector("html").classList.add("jwb")
+e._lookupContainer("service:site-settings").secure_uploads&&t.fix_chat_image_thumbnail&&e.modifyClass("component:chat-upload",{pluginId:"shuiyuan-frontend-tweaker",get imageUrl(){if(this.args.upload.thumbnail?.url){const e=new URL(this.args.upload.thumbnail?.url,location.href)
+return e.host!==location.host&&(e.host=location.host,e.pathname="/secure-uploads"+e.pathname),e.href}return this.args.upload.url}})}))}))
+
+//# sourceMappingURL=2dec8bc934a2611beb349c636aaf6ba1e818c05b.map?__ws=shuiyuan.sjtu.edu.cn

@@ -1,0 +1,64 @@
+define("discourse/plugins/retort/discourse/connectors/above-footer/emoji-picker-wrapper",["exports","discourse/plugins/retort/discourse/lib/retort"],(function(e,t){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+e.default={setupComponent(e,r){t.default.setPicker(r)}}})),define("discourse/plugins/retort/discourse/initializers/retort-init",["exports","discourse/lib/plugin-api","discourse/plugins/retort/discourse/lib/retort"],(function(e,t,r){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+e.default={name:"retort-button",initialize:function(){(0,t.withPluginApi)("0.8.6",(e=>function(e){const{retort_enabled:t}=e.container.lookup("site-settings:main")
+if(!t)return
+const s=e.getCurrentUser()
+e.modifyClass("controller:preferences/notifications",{pluginId:"retort",actions:{save(){this.get("saveAttrNames").push("custom_fields"),this._super()}}}),s?.custom_fields?.disable_retorts||(e.decorateWidget("post-contents:after-cooked",(e=>{let t=e.getModel().id,o=r.default.postFor(t)
+return e.attach("post-retort-container",{post:o,currentUser:s})})),e.addPostClassesCallback((e=>{if(!r.default.disableShowForPost(e.id))return["retort"]})),e.modifyClass("route:topic",{pluginId:"retort",setupController(e,t){r.default.activate(t),this._super(e,t)},deactivate(){r.default.deactivate(),this._super()}}),e.addPostMenuButton("retort",(e=>{if(r.default.postFor(e.id).can_retort)return{action:"clickRetort",icon:"far-smile",title:"retort.title",position:"first",className:"retort"}})),e.attachWidgetAction("post-menu","clickRetort",(function(){const e=this.findAncestorModel()
+r.default.openPicker(e)})))}(e)))}}})),define("discourse/plugins/retort/discourse/lib/retort",["exports","@ember/object","discourse/lib/ajax","discourse/lib/ajax-error","discourse-common/lib/get-owner"],(function(e,t,r,s,o){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+e.default=t.default.create({topic:{postStream:{posts:[]}},activate(e){const t=(0,o.getOwnerWithFallback)(this).lookup("service:message-bus")
+this.topic.id&&t.unsubscribe(`/retort/topics/${this.topic.id}`),this.set("topic",e),t.subscribe(`/retort/topics/${this.topic.id}`,(e=>{let{id:t,retorts:r}=e
+const s=this.postFor(t)
+s&&(s.setProperties({retorts:r}),this.get(`widgets.${t}`).scheduleRerender())}))},deactivate(){const e=(0,o.getOwnerWithFallback)(this).lookup("service:message-bus")
+this.topic.id&&e.unsubscribe(`/retort/topics/${this.topic.id}`),this.set("topic",{postStream:{posts:[]}}),this.set("widgets",{})},postFor(e){return(this.get("topic.postStream.posts")||[]).find((t=>t.id===e))},storeWidget(e,t){this.get("widgets")||this.set("widgets",{}),this.set(`widgets.${e}`,t)},removeStoredWidget(e){this.get(`widgets.${e}`)&&delete this.get("widgets")[e]},updateRetort(e,t){let{id:s}=e
+return(0,r.ajax)(`/retorts/${s}.json`,{type:"POST",data:{retort:t}})},removeRetort(e,t){let{id:s}=e
+return(0,r.ajax)(`/retorts/${s}.json`,{type:"DELETE",data:{retort:t}})},disabledCategories(){return(0,o.getOwnerWithFallback)(this).lookup("site-settings:main").retort_disabled_categories.split("|").map((e=>parseInt(e,10))).filter(Boolean)},disableShowForPost(e){const t=this.postFor(e)
+if(!t)return!0
+const r=t.get("topic.category.id"),s=this.disabledCategories()
+return r&&s.includes(r)},disableRetortButton(e){return!!this.disableShowForPost(e)||!!this.topic.archived},openPicker(e){const t=document.querySelector(`\n          article[data-post-id="${e.id}"] .post-controls .retort`)
+t&&t.classList.add("emoji-picker-anchor"),this.set("picker.isActive",!0),this.set("picker.post",e),this.set("picker.onEmojiPickerClose",(e=>{const t=document.querySelector(".emoji-picker-anchor.retort")
+t&&t.classList.remove("emoji-picker-anchor"),this.set("picker.isActive",!1)}))},setPicker(e){this.set("picker",e),this.set("picker.emojiSelected",(t=>this.updateRetort(e.post,t).then((()=>{e.set("isActive",!1),this.localUpdateWidget(e.post.id,t)})).catch(s.popupAjaxError)))},localUpdateWidget(e,t){const r=(0,o.getOwnerWithFallback)(this).lookup("service:current-user"),s=this.postFor(e),i=this.get(`widgets.${e}`)
+if(!s||!i||!r)return
+const n=s.retorts.find((e=>e.emoji===t)),a=s.my_retorts?.any((e=>e.emoji===t))
+if(a){if(n&&n.usernames.includes(r.username)){const e=n.usernames.indexOf(r.username)
+if(n.usernames.splice(e,1),n.usernames.length<=0){const e=s.retorts.findIndex((e=>e.emoji===t))
+s.retorts.splice(e,1)}}const e=s.my_retorts.findIndex((e=>e.emoji===t))
+s.my_retorts.splice(e,1)}else s.my_retorts.push({emoji:t,updated_at:(new Date).toISOString()}),n?n.usernames.includes(r.username)||n.usernames.push(r.username):s.retorts.push({post_id:e,emoji:t,usernames:[r.username]})
+i.scheduleRerender()}})})),define("discourse/plugins/retort/discourse/templates/connectors/above-footer/emoji-picker-wrapper",["exports","@ember/template-factory"],(function(e,t){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+e.default=(0,t.createTemplateFactory)({id:"FbeH9Rrn",block:'[[[1,[28,[35,0],null,[["retort","isActive","post","emojiSelected","onEmojiPickerClose"],[true,[30,0,["isActive"]],[30,0,["post"]],[30,0,["emojiSelected"]],[30,0,["onEmojiPickerClose"]]]]]]],[],false,["emoji-picker"]]',moduleName:"discourse/plugins/retort/discourse/templates/connectors/above-footer/emoji-picker-wrapper.hbs",isStrictMode:!1})})),define("discourse/plugins/retort/discourse/templates/connectors/user-preferences-notifications/retort",["exports","ember-this-fallback/deprecations-helper","@ember/template-factory"],(function(e,t,r){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+e.default=(0,r.createTemplateFactory)({id:"AX/2QboT",block:'[[[41,[30,0,["siteSettings","retort_enabled"]],[[[10,0],[14,0,"control-group retort"],[12],[1,"\\n  "],[10,"label"],[14,0,"control-label"],[12],[1,[28,[35,1],["retort.retort"],null]],[13],[1,"\\n  "],[10,0],[14,0,"controls"],[12],[1,"\\n    "],[1,[28,[35,2],null,[["labelKey","checked"],["retort.disable_retorts",[30,0,["model","custom_fields","disable_retorts"]]]]]],[1,"\\n  "],[13],[1,"\\n  "],[10,0],[14,0,"controls"],[12],[1,"\\n    "],[1,[28,[35,2],null,[["labelKey","checked"],["retort.hide_ignored_retorts",[30,0,["model","custom_fields","hide_ignored_retorts"]]]]]],[1,"\\n  "],[13],[1,"\\n"],[13],[1,"\\n"]],[]],null],[1,[28,[32,0],["[[\\"The `siteSettings` property path was used in the `discourse/plugins/retort/discourse/templates/connectors/user-preferences-notifications/retort.hbs` template without using `this`. This fallback behavior has been deprecated, all properties must be looked up on `this` when used in the template: {{this.siteSettings}}\\",false,{\\"id\\":\\"ember-this-fallback.this-property-fallback\\",\\"until\\":\\"n/a\\",\\"for\\":\\"ember-this-fallback\\",\\"url\\":\\"https://deprecations.emberjs.com/v3.x#toc_this-property-fallback\\",\\"since\\":{\\"available\\":\\"0.2.0\\"}}],[\\"The `model` property path was used in the `discourse/plugins/retort/discourse/templates/connectors/user-preferences-notifications/retort.hbs` template without using `this`. This fallback behavior has been deprecated, all properties must be looked up on `this` when used in the template: {{this.model}}\\",false,{\\"id\\":\\"ember-this-fallback.this-property-fallback\\",\\"until\\":\\"n/a\\",\\"for\\":\\"ember-this-fallback\\",\\"url\\":\\"https://deprecations.emberjs.com/v3.x#toc_this-property-fallback\\",\\"since\\":{\\"available\\":\\"0.2.0\\"}}],[\\"The `model` property path was used in the `discourse/plugins/retort/discourse/templates/connectors/user-preferences-notifications/retort.hbs` template without using `this`. This fallback behavior has been deprecated, all properties must be looked up on `this` when used in the template: {{this.model}}\\",false,{\\"id\\":\\"ember-this-fallback.this-property-fallback\\",\\"until\\":\\"n/a\\",\\"for\\":\\"ember-this-fallback\\",\\"url\\":\\"https://deprecations.emberjs.com/v3.x#toc_this-property-fallback\\",\\"since\\":{\\"available\\":\\"0.2.0\\"}}]]"],null]]],[],false,["if","i18n","preference-checkbox"]]',moduleName:"discourse/plugins/retort/discourse/templates/connectors/user-preferences-notifications/retort.hbs",scope:()=>[t.default],isStrictMode:!1})})),define("discourse/plugins/retort/discourse/widgets/post-retort-container",["discourse/lib/text","discourse/widgets/widget","discourse/plugins/retort/discourse/lib/retort"],(function(e,t,r){"use strict";(0,t.createWidget)("post-retort-container",{tagName:"div.post-retort-container",buildKey:e=>`post-retort-container-${e.post.id}`,defaultState(e){let{post:t}=e
+return{post:t}},init(e){r.default.storeWidget(e.post.id,this)},destroy(){r.default.removeStoredWidget(this.state.post.id)},html(t){const{post:s,currentUser:o}=t
+if(r.default.disableShowForPost(s.id))return
+if(!s.retorts)return
+return s.retorts.map((t=>(t.emojiUrl=(0,e.emojiUrlFor)(t.emoji),t))).filter((e=>{let{emojiUrl:t}=e
+return t})).sort(((e,t)=>e.emoji.localeCompare(t.emoji))).map((e=>{let{emoji:t,emojiUrl:r,usernames:i}=e,n=i
+if(o?.custom_fields?.hide_ignored_retorts){const e=new Set(o.ignored_users)
+n=i.filter((t=>!e.has(t)))}return n.length>0?this.attach("retort-toggle",{emoji:t,emojiUrl:r,post:s,usernames:n,currentUser:o}):null}))}})})),define("discourse/plugins/retort/discourse/widgets/retort-remove-emoji",["discourse/lib/ajax-error","discourse/widgets/widget","discourse-common/lib/get-owner","discourse-i18n","discourse/plugins/retort/discourse/lib/retort"],(function(e,t,r,s,o){"use strict";(0,t.createWidget)("retort-remove-emoji",{tagName:"a.remove-retort",template:function(e,t){var r=__widget_helpers.iconNode,s=[]
+return s.push(r("times")),s},buildKey:e=>`retort-remove-${e.post.id}-${e.emoji}`,defaultState(e){let{emoji:t,post:r}=e
+return{emoji:t,post:r}},click(){const{post:t,emoji:i}=this.state;(0,r.getOwnerWithFallback)(this).lookup("service:dialog").confirm({title:s.default.t("retort.confirm_remove.title"),message:s.default.t("retort.confirm_remove.message",{emoji:i}),didConfirm:()=>o.default.removeRetort(t,i).catch(e.popupAjaxError)})}})})),define("discourse/plugins/retort/discourse/widgets/retort-toggle",["exports","virtual-dom","discourse/lib/ajax-error","discourse/widgets/widget","discourse-i18n","discourse/plugins/retort/discourse/lib/retort"],(function(e,t,r,s,o,i){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+e.default=(0,s.createWidget)("retort-toggle",{tagName:"button.post-retort",buildClasses(e){const t=[]
+return e.usernames.length<=0?t.push("nobody-retort"):this.isMyRetort()?t.push("my-retort"):t.push("not-my-retort"),this.disabled()&&t.push("disabled"),t},click(){if(null==this.currentUser||this.disabled())return
+const{post:e,emoji:t}=this.attrs
+i.default.updateRetort(e,t).then((()=>i.default.localUpdateWidget(e.id,t))).catch(r.popupAjaxError)},isMyRetort(){const e=this.attrs.post.my_retorts?.find((e=>e.emoji===this.attrs.emoji))
+return!!e},myRetortUpdateTime(){const e=this.attrs.post.my_retorts?.find((e=>e.emoji===this.attrs.emoji))
+return e?new Date(e?.updated_at):void 0},disabled(){if(!this.attrs.post.can_retort)return!0
+if(this.isMyRetort()){if(new Date-this.myRetortUpdateTime()>1e3*this.siteSettings.retort_withdraw_tolerance)return!0}return!1},html(e){const{emoji:r,usernames:s,emojiUrl:o}=this.attrs
+if(s.length<=0)return[]
+const i=[(0,t.h)("img.emoji",{src:o,alt:`:${r}:`}),(0,t.h)("span.post-retort__count",s.length.toString()),(0,t.h)("span.post-retort__tooltip",this.sentence(this.attrs))]
+return e.post.can_remove_retort&&i.push(this.attach("retort-remove-emoji",e)),i},sentence(e){let t,{usernames:r,emoji:s}=e
+switch(r.length){case 1:t="retort.reactions.one_person"
+break
+case 2:t="retort.reactions.two_people"
+break
+default:t="retort.reactions.many_people"}return o.default.t(t,{emoji:s,first:r[0],second:r[1],count:r.length-2})}})}))
+
+//# sourceMappingURL=retort-81efdf286e8b3bea02d58535f37c5c4ab285296447214b020de70f18ac4acb43.map
+//!
+
+;

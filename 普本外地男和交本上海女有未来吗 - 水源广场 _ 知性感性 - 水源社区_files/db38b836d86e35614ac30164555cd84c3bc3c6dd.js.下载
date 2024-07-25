@@ -1,0 +1,14 @@
+"require"in window&&require("discourse/lib/theme-settings-store").registerSettings(84,{badge_groups_to_show:"活动",show_on_topic_participant:!1,override_group_flair:!1}),"define"in window&&define("discourse/theme-84/discourse/api-initializers/post-avatar-user-title",["exports","discourse/models/user","discourse/models/badge","discourse/lib/api"],(function(e,r,t,i){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+const s=require("discourse/lib/theme-settings-store").getObjectForTheme(84)
+e.default=(0,i.apiInitializer)("0.11.1",(e=>{const r=new Map
+let i=!1
+const o=[],l=s.badge_groups_to_show??[]
+t.default.findAll().then((e=>{e.filter((e=>e.allow_title&&l.includes(e.badge_grouping?.name)&&e.image_url)).forEach((e=>{r.set(e.name,e.image_url)})),i=!0,o.forEach((e=>e.scheduleRerender()))}))
+const a=["post-avatar"]
+s.show_on_topic_participant&&a.push("topic-participant"),a.forEach((function(t){return e.reopenWidget(t,{getUserTitle(e){if(void 0!==e.user_title)return e.user_title
+e.username},getTitleImgUrl(e){return r.get(this.getUserTitle(e))},hasTitleImg(e){return!!this.getTitleImgUrl(e)},html(e){i||o.push(this)
+for(var r=arguments.length,t=new Array(r>1?r-1:0),l=1;l<r;l++)t[l-1]=arguments[l]
+if((!e.flair_url&&!e.flair_bg_color||s.override_group_flair)&&this.hasTitleImg(e)){return e.flair_name=this.getUserTitle(e),e.flair_url=this.getTitleImgUrl(e),e.flair_url&&(e.flair_group_id=-1),this._super(e,...t)}return this._super(e,...t)}})}))}))}))
+
+//# sourceMappingURL=db38b836d86e35614ac30164555cd84c3bc3c6dd.map?__ws=shuiyuan.sjtu.edu.cn

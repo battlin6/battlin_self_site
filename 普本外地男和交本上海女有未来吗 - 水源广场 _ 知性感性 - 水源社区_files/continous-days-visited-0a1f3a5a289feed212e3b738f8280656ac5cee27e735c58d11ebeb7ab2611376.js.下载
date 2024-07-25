@@ -1,0 +1,8 @@
+define("discourse/plugins/continous-days-visited/discourse/templates/connectors/user-summary-stat/user_summary_continous_days_visited",["exports","ember-this-fallback/deprecations-helper","@ember/template-factory"],(function(e,s,t){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+e.default=(0,t.createTemplateFactory)({id:"FAfUHPDf",block:'[[[1,[28,[35,0],null,[["value","label"],[[30,0,["model","continous_days_visited"]],"continous_days_visited"]]]],[1,"\\n"],[1,[28,[32,0],["[[\\"The `model` property path was used in the `discourse/plugins/continous-days-visited/discourse/templates/connectors/user-summary-stat/user_summary_continous_days_visited.hbs` template without using `this`. This fallback behavior has been deprecated, all properties must be looked up on `this` when used in the template: {{this.model}}\\",false,{\\"id\\":\\"ember-this-fallback.this-property-fallback\\",\\"until\\":\\"n/a\\",\\"for\\":\\"ember-this-fallback\\",\\"url\\":\\"https://deprecations.emberjs.com/v3.x#toc_this-property-fallback\\",\\"since\\":{\\"available\\":\\"0.2.0\\"}}]]"],null]]],[],false,["user-stat"]]',moduleName:"discourse/plugins/continous-days-visited/discourse/templates/connectors/user-summary-stat/user_summary_continous_days_visited.hbs",scope:()=>[s.default],isStrictMode:!1})}))
+
+//# sourceMappingURL=continous-days-visited-fac725f154bf53f015a9ea8f1812685029d3fb5682bbfff88f6e3e8b22ec874a.map
+//!
+
+;

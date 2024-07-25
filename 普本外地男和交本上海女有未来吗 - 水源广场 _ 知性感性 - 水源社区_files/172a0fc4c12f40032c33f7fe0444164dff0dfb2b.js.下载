@@ -1,0 +1,19 @@
+"require"in window&&require("discourse/lib/theme-settings-store").registerSettings(97,{show_op_only_button:!0,show_op_only_post_count_threshold:1}),"define"in window&&define("discourse/theme-97/discourse/api-initializers/discourse-op-post-only",["exports","discourse/lib/api"],(function(t,o){"use strict"
+Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0
+require("discourse/lib/theme-settings-store").getObjectForTheme(97)
+t.default=(0,o.apiInitializer)("0.11.1",(t=>{}))})),"define"in window&&define("discourse/theme-97/discourse/templates/connectors/timeline-footer-controls-after/op-post-only-toggle",["exports","@ember/template-factory"],(function(t,o){"use strict"
+Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0
+t.default=(0,o.createTemplateFactory)({id:null,block:'[[[41,[30,0,["shouldShow"]],[[[1,"    "],[8,[39,1],[[16,0,[30,0,["buttonClass"]]]],[["@action","@icon","@translatedTitle"],[[30,0,["toggleOpPostOnly"]],"filter",[30,0,["buttonTitle"]]]],null],[1,"\\n"]],[]],null]],[],false,["if","d-button"]]',moduleName:"discourse/theme-97/discourse/templates/connectors/timeline-footer-controls-after/op-post-only-toggle",isStrictMode:!1})})),"define"in window&&define("discourse/theme-97/discourse/connectors/timeline-footer-controls-after/op-post-only-toggle",["exports","@glimmer/component","@glimmer/tracking","@ember/controller","@ember/object","discourse/models/user","discourse-i18n"],(function(t,o,e,s,i,n,r){"use strict"
+Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0
+const l=require("discourse/lib/theme-settings-store").getObjectForTheme(97),c=t=>`theme_translations.97.${t}`
+class u extends o.default{static#t=(()=>dt7948.g(this.prototype,"topic",[s.inject]))()
+#o=(()=>{dt7948.i(this,"topic")})()
+static#e=(()=>dt7948.g(this.prototype,"opTopicPostCount",[e.tracked]))()
+#s=(()=>{dt7948.i(this,"opTopicPostCount")})()
+static#i=(()=>dt7948.g(this.prototype,"showOPonly",[e.tracked],(function(){return!1})))()
+#n=(()=>{dt7948.i(this,"showOPonly")})()
+constructor(){super(...arguments),this.topicModel=this.args.outletArgs.model,l.show_op_only_button&&this.init()}init(){n.default.findByUsername(this.topicModel.details.created_by.username,{include_post_count_for:this.topicModel.id}).then((t=>{t.topic_post_count&&(this.opTopicPostCount=t.topic_post_count[this.topicModel.id],this.opUser=t)}))}get buttonTitle(){return this.showOPonly?r.default.t(c("show_all_posts")):r.default.t(c("filter_by_op"),{count:this.opTopicPostCount})}get buttonClass(){return this.showOPonly?"btn-primary":"btn-default"}get shouldShow(){return l.show_op_only_button&&this.opTopicPostCount>l.show_op_only_post_count_threshold}toggleOpPostOnly(){if(this.showOPonly){const t=this.topic.model.postStream
+t.cancelFilter(),t.refresh()}else this.topic.send("filterParticipant",this.opUser)
+this.showOPonly=!this.showOPonly}static#r=(()=>dt7948.n(this.prototype,"toggleOpPostOnly",[i.action]))()}t.default=u}))
+
+//# sourceMappingURL=172a0fc4c12f40032c33f7fe0444164dff0dfb2b.map?__ws=shuiyuan.sjtu.edu.cn

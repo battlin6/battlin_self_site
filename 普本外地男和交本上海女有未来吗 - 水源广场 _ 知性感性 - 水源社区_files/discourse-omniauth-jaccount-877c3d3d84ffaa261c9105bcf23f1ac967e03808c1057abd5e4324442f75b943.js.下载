@@ -1,0 +1,8 @@
+define("discourse/plugins/discourse-omniauth-jaccount/discourse/templates/connectors/admin-user-details/admin-user-details",["exports","@ember/template-factory"],(function(e,t){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+e.default=(0,t.createTemplateFactory)({id:"w6oX90bK",block:'[[[41,[30,1,["model","jaccount_type"]],[[[10,0],[14,0,"display-row"],[14,5,"display: none;"],[12],[13],[1,"\\n"],[10,0],[14,0,"display-row jaccount-type"],[12],[1,"\\n  "],[10,0],[14,0,"field"],[12],[1,[28,[35,1],["user.jaccount_type.title"],null]],[13],[1,"\\n  "],[10,0],[14,0,"value"],[12],[1,[30,1,["model","jaccount_type"]]],[13],[1,"\\n"],[13],[1,"\\n"]],[]],null]],["@outletArgs"],false,["if","i18n"]]',moduleName:"discourse/plugins/discourse-omniauth-jaccount/discourse/templates/connectors/admin-user-details/admin-user-details.hbs",isStrictMode:!1})}))
+
+//# sourceMappingURL=discourse-omniauth-jaccount-70eba88800e6cff86c0b92f287a589d4601c085effe68489d42bc4502ba98fee.map
+//!
+
+;

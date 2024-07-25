@@ -1,0 +1,8 @@
+"define"in window&&define("discourse/theme-67/discourse/pre-initializers/theme-67-translations",["exports"],(function(e){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+e.default={name:"theme-67-translations",initialize(){const e={zh_CN:{close_confirm_modal_title:"确认关闭",close_confirm_modal_body:"关闭话题后，您和其他用户均无法继续回复，并且您将无法打开被关闭的话题。",archive_confirm_modal_title:"确认存档",archive_confirm_modal_body:"存档话题后，您和其他用户均无法继续回复、编辑或者点赞。",confirm_button_text:"确认",cancel_button_text:"取消"},en:{close_confirm_modal_title:"Confirm Closing",close_confirm_modal_body:"You and other users cannot reply after closed. ",archive_confirm_modal_title:"Confirm Achiving",archive_confirm_modal_body:"You and other users cannot reply, modify, delete and like after archived.",confirm_button_text:"Confirm",cancel_button_text:"Cancel"}}
+for(let o in e){let t=I18n.translations
+for(let e of[o,"js","theme_translations"])t=t[e]=t[e]||{}
+t[67]=e[o]}}}}))
+
+//# sourceMappingURL=a1df1e94bf4b5b5825e5947ad9acccb47fdaaa08.map?__ws=shuiyuan.sjtu.edu.cn

@@ -1,0 +1,8 @@
+define("discourse/plugins/optimized-move-posts-notice/initializers/optimized-move-posts-notice",["exports","discourse/lib/plugin-api"],(function(i,e){"use strict"
+Object.defineProperty(i,"__esModule",{value:!0}),i.default=void 0
+i.default={name:"optimized-move-posts-notice",initialize(){(0,e.withPluginApi)("0.8.31",(i=>{i.addPostSmallActionIcon("optimized_move_posts","sign-in-alt")}))}}}))
+
+//# sourceMappingURL=optimized-move-posts-notice-c9af12036f6c16df3ab64def7fdedec723643ad33cf0a9c0b2f906d55c393554.map
+//!
+
+;

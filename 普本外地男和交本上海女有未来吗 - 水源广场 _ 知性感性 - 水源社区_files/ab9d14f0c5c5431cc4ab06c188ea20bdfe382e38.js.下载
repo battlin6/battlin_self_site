@@ -1,0 +1,8 @@
+"define"in window&&define("discourse/theme-97/discourse/pre-initializers/theme-97-translations",["exports"],(function(e){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+e.default={name:"theme-97-translations",initialize(){const e={zh_CN:{filter_by_op:"只看楼主（%{count}个帖子）",show_all_posts:"显示全部帖子"},en:{filter_by_op:"Filter by OP (%{count} posts)",show_all_posts:"Show all posts"}}
+for(let t in e){let s=I18n.translations
+for(let e of[t,"js","theme_translations"])s=s[e]=s[e]||{}
+s[97]=e[t]}}}}))
+
+//# sourceMappingURL=ab9d14f0c5c5431cc4ab06c188ea20bdfe382e38.map?__ws=shuiyuan.sjtu.edu.cn
