@@ -5,7 +5,7 @@ import re
 directory = '.\\html_merge\\readin'  # 替换为实际的文件目录
 
 # 定义合并后HTML文件的名称
-output_file = 'combined.html'
+output_file = 'after_merge.html'
 
 # 获取目录中的所有HTML文件
 files = [f for f in os.listdir(directory) if f.endswith('.html')]
